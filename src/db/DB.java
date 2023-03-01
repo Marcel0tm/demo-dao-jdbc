@@ -13,6 +13,7 @@ public class DB {
 
 	private static Connection conn = null;
 	
+	// Cria ou retorna(caso ela já exista) a conexão com o banco
 	public static Connection getConnection() {
 		if (conn == null) {
 			try {
@@ -38,8 +39,11 @@ public class DB {
 	}
 	
 	private static Properties loadProperties() {
+		// FileInputStream -> Leitura de dados de "db.properties" e a transforma em bytes
 		try (FileInputStream fs = new FileInputStream("db.properties")) {
+			// Objeto "props" criado para armazenar as propriedades do banco
 			Properties props = new Properties();
+			// ".load" carrega a leitura de dados em bytes para o objeto "props" e o retorna em seguida
 			props.load(fs);
 			return props;
 		}
